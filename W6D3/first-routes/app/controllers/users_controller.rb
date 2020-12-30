@@ -23,9 +23,12 @@ class UsersController < ApplicationController
     def update
         # debugger
         user = User.find(params[:id])
-        user.update(user_params)
-        render json: user
+        if user.update_attributes(user_params)
+            render json: user
         # User.update(params[:id]=> params.require(:user).permit(:email,:name))
+        else
+            render json: user.errors.full_messages, status: :unprocessable_entity
+        end
     end
 
     def destroy
