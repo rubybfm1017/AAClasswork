@@ -1,3 +1,4 @@
+require "byebug"
 class UsersController < ApplicationController
     def index
          render json: User.all
@@ -20,6 +21,13 @@ class UsersController < ApplicationController
     end
 
     def update
-        
+        # debugger
+        User.update(params[:id]=> params.require(:user).permit(:email,:name))
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        User.destroy(params[:id])
+        render json: user
     end
 end
