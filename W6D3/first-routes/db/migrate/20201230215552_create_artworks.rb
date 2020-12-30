@@ -5,6 +5,7 @@ class CreateArtworks < ActiveRecord::Migration[5.2]
       t.string :image_url, null: false
       t.integer :artist_id, null: false
     end
-    add_index :artworks, :artist_id
+    add_index :artworks, [:artist_id, :image_url], unique: true
+
   end
 end
