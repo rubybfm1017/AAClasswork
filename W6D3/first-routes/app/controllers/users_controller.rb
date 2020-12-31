@@ -1,6 +1,7 @@
 require "byebug"
 class UsersController < ApplicationController
     def index
+        user = User.find(params[:id])
          render json: User.all
     end
 

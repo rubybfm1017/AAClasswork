@@ -1,7 +1,7 @@
 class ArtworksController < ApplicationController
-    def index
-        render json: Artwork.all
-    end
+    # def index
+    #     render json: Artwork.all
+    # end
 
     def show
         render json: Artwork.find(params[:id])
