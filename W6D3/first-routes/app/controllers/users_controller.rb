@@ -2,7 +2,6 @@ require "byebug"
 class UsersController < ApplicationController
     def index
          render json: User.all
-        # render plain: "I'm in the index action!"
     end
 
     def create
@@ -12,8 +11,6 @@ class UsersController < ApplicationController
         else 
             render json: user.errors.full_messages, status: :unprocessable_entity
         end
-        # user.save!
-        # render json: user
     end
 
     def show
@@ -21,11 +18,9 @@ class UsersController < ApplicationController
     end
 
     def update
-        # debugger
         user = User.find(params[:id])
         if user.update_attributes(user_params)
             render json: user
-        # User.update(params[:id]=> params.require(:user).permit(:email,:name))
         else
             render json: user.errors.full_messages, status: :unprocessable_entity
         end
@@ -33,7 +28,6 @@ class UsersController < ApplicationController
 
     def destroy
         user = User.find(params[:id])
-        # User.destroy(params[:id])
         user.destroy
         render json: user
     end
@@ -41,6 +35,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:username)
     end
 end
