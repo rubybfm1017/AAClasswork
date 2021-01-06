@@ -1,0 +1,17 @@
+<h1>new user</h1>
+
+    <form action="<%= users_url %>" method="post">
+    <label for="user_username">username</label>
+
+    <input type="text" name="user[username]" id="user_username" value="<%= @user.username%>" >
+    <br>
+    <br>
+
+    <label for="user_password">password</label>
+
+    <input type="password" name="user[password]" id="user_password" >
+    <br>
+    <br>
+    
+    <input type="submit">
+    </form>
