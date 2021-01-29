@@ -1,0 +1,25 @@
+/* PHASE 0: Sidebar */
+.content-sidebar {
+    float:left;
+    width: 160px;
+    height: 100%;
+}
+.profile-picture {
+    display: block;
+    margin-top: -120px;
+    position: relative;
+}
+
+h2 {
+    display: block;
+    margin-top: auto;
+    font-weight: bold;
+  
+}
+
+.profile-info {
+    display: block;
+
+}
+
+

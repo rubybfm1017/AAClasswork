@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditCloneProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if !logged_in? %>
+      <a href="<%= new_session_url %>">Sign In!</a>
+    <% else %>
+
+    <div>
+        <ul>
+            <li><%= current_user.username %></li>
+            <li><a href="<%= new_sub_url %>">Create a sub!</a></li>
+            <li><a href="<%= subs_url %>">All Subs</a></li>
+            <li>
+                <form action="<%= session_url %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input
+                type="hidden"
+                name="authenticity_token"
+                value="<%= form_authenticity_token %>">
+                <button type="submit">Logout</button>
+            </form></li>
+        </ul>
+    </div>
+    <% end %>
+
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

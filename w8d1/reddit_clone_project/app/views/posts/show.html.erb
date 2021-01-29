@@ -1,0 +1,18 @@
+<% username = User.find_by(id: @post.user_id)%>
+
+<h1><a href="<%= post_url(@post.id) %>"><%= @post.title %></a> by <%= username.username.capitalize %></h1>
+<p>
+    <label>Content:
+        <%=  @post.content %>
+    </label>
+</p>
+<button>Upvote</button>
+<button>Downvote</button>
+<div>
+    <ul>
+        <%=  @post.sub.each do |sub| %>
+        <li><%= sub.title %></li>
+        <% end %>
+    </ul>
+
+</div>
